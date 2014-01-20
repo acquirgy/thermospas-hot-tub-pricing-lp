@@ -185,7 +185,7 @@ figure {
 	float: left;
 	margin: 0 5px 0 2px;
 	border: 1px solid #8db6ce;
-	height: 28px;
+	height: 38px;
 	cursor: default;
 	background: #fff;
 }
@@ -198,7 +198,7 @@ figure {
 .select-area .center {
 	display: block;
 	padding: 6px 4px;
-	line-height: 15px;
+	line-height: 26px;
 	font-size: 12px;
 	white-space: nowrap;
 	color: #1a89c5;
@@ -208,8 +208,8 @@ figure {
 }
 .select-area .select-opener {
 	position: absolute;
-	top: 0;
-	right: 0;
+	top: 5px;
+	right: 6px;
 	width: 28px;
 	height: 28px;
 	background: #76a9cc;
@@ -373,7 +373,7 @@ figure {
 	margin: 0 0 13px;
 }
 .promo-txt ul {margin: -10px 0px 0px 10px;}
-.promo-txt li 
+.promo-txt li
 {
     float:left;
     width: 240px;
@@ -524,7 +524,7 @@ figure {
 	text-align: center;
 	color: #023d72;
 }
-.social-block p 
+.social-block p
 {
     padding: 20px 0px 0px 11px;
 }
@@ -733,7 +733,7 @@ figure {
     line-height: 24px;
     margin: 10px 50px 0px 0px;
 }
-.phone 
+.phone
 {
     color: rgb(0, 82, 155);
     font-size: 1.5em;
@@ -749,7 +749,7 @@ figure {
     height: 200px;
     color: #1a89c5; padding-left: 20px;
 }
-#cfm-form1 table 
+#cfm-form1 table
 {
     width: 100%;
     border-radius: 10px;
@@ -763,16 +763,16 @@ figure {
   width: 200px;
 }
 #cfm-form1 input[type="text"] {
-    
+
     margin: 0px auto;
     border: 1px solid rgb(141, 182, 206);
     padding: 4px;
     height: 30px;
-    width: 100%;
+    width: 95%;
     background: none repeat scroll 0% 0% rgb(255, 255, 255);
     -moz-box-sizing: border-box;
 }
-#cfm-form1 select 
+#cfm-form1 select
 {
     float: left;
      margin: 0px auto;
@@ -798,7 +798,7 @@ figure {
 }
 #send-now input[type="submit"]:hover
 {
-    
+
 }
 #free-inspection {width: 100%; text-align: center;}
 #free-inspection input[type="submit"]
@@ -817,6 +817,16 @@ figure {
 #free-inspection input[type="submit"]:hover
 {
    background: transparent url('../images/hot-tub-inspection-hover.png') no-repeat scroll;
+}
+
+.state-wrapper{
+	float: left;
+	width: 100px;
+}
+.zip-wrapper {
+	float: left;
+	width: 120px;
+	margin-left: 9px;
 }
 
 /**** Media Queries ***/
@@ -855,7 +865,7 @@ figure {
 		line-height: 15px;
 		font-size: 12px;
 	}
-	
+
 	.features-holder {
 		padding: 0 0 20px;
 	}
@@ -892,7 +902,7 @@ figure {
 	.media-list li {margin: 0 5px 0 9px;}
 	#footer .txt {width: 250px;}
 	.promo-txt ul {margin: -10px 0px 0px 0px; }
-    .promo-txt li 
+    .promo-txt li
     {
         float:left;
         width: 220px;
@@ -1078,7 +1088,7 @@ figure {
 	}
 	.promo-txt p {margin: 0 0 27px;}
 	.promo-txt ul {margin: -20px 0px 20px 0px;}
-    .promo-txt li 
+    .promo-txt li
     {
         float: none;
         width: 100%;
@@ -1269,7 +1279,7 @@ figure {
     {
         margin: 0px 10%;
     }
-	.phone 
+	.phone
 	{
 	    margin: 30px auto 10px auto;
 	    text-align: center;
