@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>ThermoSpas</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<link media="all" rel="stylesheet" href="css/fancybox.css">
 		<link media="all" rel="stylesheet" href="css/all.css">
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
@@ -16,18 +16,18 @@
             <div id="topspace">
                 <!-- logotype -->
 						<h1 class="logo">ThermoSpas - Designed to Improve Your Life</h1>
-                       <p class="phone-top"><strong>Have Questions?</strong><br />1-800-807-6107</p> 
+                       <p class="phone-top"><strong>Have Questions?</strong><br />1-800-807-6107</p>
             </div>
 			<!-- header -->
 			<header id="header">
 				<!-- main image -->
 				<div class="main-image">
 					<img src="images/img01.jpg" height="410" alt="image description">
-                    
+
 				</div>
 				<div class="header-frame">
 					<div class="header-holder">
-						
+
 						<div class="top-block">
 							<div class="arrow-left"></div>
 							<div class="arrow-right">
@@ -100,7 +100,7 @@
 						</div>
 					</div>
 
-					
+
 					<div class="features-holder">
 						<!-- features -->
 						<div class="features">
@@ -122,7 +122,7 @@
 						<div class="quotes">
 							<blockquote>
 								<q>I would like to say that I would recommend ThermoSpas for whatever reason – whether it be entertainment, stress or therapy. It has helped my husband and I immeasurably!”</q>
-								<cite>– Mrs. Christine L. Silva</cite>	
+								<cite>– Mrs. Christine L. Silva</cite>
 							</blockquote>
 							<blockquote>
 								<q>Our physical health, our sense of spiritual well being, a significantly lower stress level, and an improved love life are all benefits that both my wife and I noticed right away.”</q>
@@ -139,7 +139,7 @@
 						<li><img src="images/img11.png" alt="image description" /></li>
                         <li><p class="phone"><strong>Get Your Free DVD &amp; Brochure Now!</strong><br />Call Today 1-800-807-6107</p></li>
 					</ul>
-					
+
 					<div class="txt">
 						<ul class="bottom-nav">
 							<li><a class="lightbox-opener" href="#popup1">Privacy Policy</a></li>
