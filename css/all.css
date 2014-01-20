@@ -286,18 +286,19 @@ figure {
 .top-block .arrow-right {
 	position: absolute;
 	top: 130px;
-	right: 349px;
-	width: 775px;
+	right: 423px;
+	width: 700px;
 	height: 132px;
 	background: url(../images/bg-arrow-right.png) no-repeat;
 }
 .main-promo {
-	padding: 28px 90px 0 0px;
+	padding: 28px 0px 0px 0px;
 	line-height: 24px;
 	font-size: 24px;
 	letter-spacing: -1px;
 	text-align: center;
 	color: #949fa1;
+	width: 100%;
 }
 .main-promo .title {
 	display: block;
