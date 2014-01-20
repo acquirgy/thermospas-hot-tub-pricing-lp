@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(isset($_GET['iref'])) {
+    $_SESSION['iref'] = $_GET['iref'];
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -9,6 +16,20 @@
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="js/jquery.main.js"></script>
 		<!--[if IE]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
+
+    <!-- Start Google Analytics Code -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33203294-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    <!-- End Google Analytics Code -->
+
 	</head>
 	<body>
 		<!-- page -->
@@ -38,7 +59,7 @@
 								</div>
 							</div>
 							<!-- registration form -->
-							<form class="form-reg" method="post" action="#">
+							<form class="form-reg" method="post" action="process.php">
 								<fieldset>
 									<legend>Register form</legend>
 									<strong class="title">Fast, Easy &amp; FREE!</strong>
@@ -46,20 +67,20 @@
                                     <p class="req">* required</p>
 									<div class="row">
 										<div class="row-area">
-											<input id="nameField" class="text1 required" type="text" placeholder="First Name*" title="First Name*" />
+											<input name="fname" id="nameField" class="text1 required" type="text" placeholder="First Name*" title="First Name*" />
 										</div>
 										<div class="row-area">
-											<input class="text2 required" type="text" placeholder="Last Name*" title="Last Name*" />
+											<input name="lname" class="text2 required" type="text" placeholder="Last Name*" title="Last Name*" />
 										</div>
 									</div>
                                     <div class="row row-area">
-										<input id="phone-number" type="text" class="required-number" placeholder="Phone*" title="Phone" />
+										<input id="phone-number" name="phone" type="text" class="required-number" placeholder="Phone*" title="Phone*" />
 									</div>
                                     <div class="row row-area">
-											<input id="zipcode" class="required" type="text" placeholder="Zip Code*" title="Zip Code" />
+											<input id="zipcode" name="zipcode" class="required" type="text" placeholder="Zip Code*" title="Zip Code*" />
 										</div>
 									<div class="row row-area">
-										<input type="text" value="Email" placeholder="Email" />
+										<input type="text" name="email" value="Email" placeholder="Email" />
 									</div>
 									<div class="row">
 										<input type="submit" value="Get Your FREE DVD &amp; Brochure NOW!" />

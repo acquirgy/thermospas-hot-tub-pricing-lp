@@ -44,28 +44,30 @@ function initValidation() {
 	var successClass = 'success';
 	var regEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	var regPhone = /^[0-9\-\(\)\ ]+$/;
-	
+
 	jQuery('form.form-reg').each(function(){
 		var form = jQuery(this);
 		var successFlag = true;
 		var inputs = form.find('input:text, textarea, select');
-		
+
 		// form validation function
 		function validateForm() {
 			successFlag = true;
-			
+
 			inputs.each(checkField);
-			
+
 			if(!successFlag) {
 				return false;
 			}
 		}
-		
+
 		// check field
 		function checkField(i, obj) {
 			var currentObject = jQuery(obj);
 			var currentParent = currentObject.parents('div.row-area');
-			
+
+			console.log(currentObject);
+
 			// not empty fields
 			if(currentObject.hasClass('required')) {
 				setState(currentParent, currentObject, !currentObject.val().length || currentObject.val() === currentObject.attr('title'));
@@ -83,7 +85,7 @@ function initValidation() {
 				setState(currentParent, currentObject, currentObject.get(0).selectedIndex === 0);
 			}
 		}
-		
+
 		// set state
 		function setState(hold, field, error) {
 			hold.removeClass(errorClass).removeClass(successClass);
@@ -95,7 +97,7 @@ function initValidation() {
 				hold.addClass(successClass);
 			}
 		}
-		
+
 		// form event handlers
 		form.submit(validateForm);
 	});
@@ -139,7 +141,7 @@ jQuery(function(){
 	// fix options
 	var supportPositionFixed = !( (jQuery.browser.msie && jQuery.browser.version < 8) || isTouchDevice );
 	var overlaySelector = '#fancybox-overlay';
-	
+
 	if(supportPositionFixed) {
 		// create <style> rules
 		var head = document.getElementsByTagName('head')[0],
@@ -169,7 +171,7 @@ function initInputs() {
 		clearTextareas: true,
 		clearPasswords: true,
 		skipClass: 'default',
-		
+
 		// input options
 		wrapWithElement: false,
 		showUntilTyping: false,
@@ -492,7 +494,7 @@ jcf = {
 				'-webkit-user-select:none;'+
 				'user-select:none;'+
 			'}');
-		
+
 		// append style element
 		style.type = 'text/css';
 		if(style.styleSheet) {
@@ -584,7 +586,7 @@ jcf.setBaseModule({
 		// handle focus loses
 		if(this.focused) return;
 		this.focused = true;
-		
+
 		// handle touch devices also
 		if(jcf.isTouchDevice) {
 			if(jcf.focusedInstance && jcf.focusedInstance.realElement != this.realElement) {
@@ -985,7 +987,7 @@ jcf.lib = {
 			if (e.isFixed) {
 				return e;
 			}
-			e.isFixed = true; 
+			e.isFixed = true;
 			e.preventDefault = e.preventDefault || function(){this.returnValue = false}
 			e.stopPropagation = e.stopPropagaton || function(){this.cancelBubble = true}
 			if (!e.target) {
@@ -1092,9 +1094,9 @@ jcf.addModule({
 		selectedClass:'item-selected',
 		currentSelectedClass:'current-selected',
 		disabledClass:'select-disabled',
-		valueSelector:'span.center', 
+		valueSelector:'span.center',
 		optGroupClass:'optgroup',
-		openerSelector:'a.select-opener',		
+		openerSelector:'a.select-opener',
 		selectStructure:'<span class="left"></span><span class="center"></span><a class="select-opener"></a>',
 		classPrefix:'select-',
 		dropMaxHeight: 200,
@@ -1137,7 +1139,7 @@ jcf.addModule({
 				this.realElement.title = '';
 			}, this)
 		}
-		
+
 		// create select body
 		this.opener = jcf.lib.queryBySelector(this.options.openerSelector, this.fakeElement)[0];
 		this.valueText = jcf.lib.queryBySelector(this.options.valueSelector, this.fakeElement)[0];
@@ -1331,7 +1333,7 @@ jcf.addModule({
 			if(!jcf.lib.prevSibling(obj) || jcf.lib.prevSibling(obj).tagName.toLowerCase() != 'option') {
 				res += '<ul>';
 			}
-			
+
 			optImage = this.parseOptionTitle(obj.title);
 			res += '<li rel="'+(this.optNum++)+'" class="'+(obj.className? obj.className + ' ' : '')+(index % 2 ? 'option-even ' : '')+'jcfcalc"><a href="#">'+(optImage ? '<img src="'+optImage+'" alt="" />' : '')+'<span>' + obj.innerHTML + '</span></a></li>';
 			if(!jcf.lib.nextSibling(obj) || jcf.lib.nextSibling(obj).tagName.toLowerCase() != 'option') {
@@ -1353,8 +1355,8 @@ jcf.addModule({
 	positionDropdown: function(){
 		var ofs = jcf.lib.getOffset(this.fakeElement), selectAreaHeight = this.fakeElement.offsetHeight, selectDropHeight = this.selectDrop.offsetHeight;
 		var fitInTop = ofs.top - selectDropHeight >= jcf.lib.getScrollTop() && jcf.lib.getScrollTop() + jcf.lib.getWindowHeight() < ofs.top + selectAreaHeight + selectDropHeight;
-		
-		
+
+
 		if((this.options.handleDropPosition && fitInTop) || this.options.selectDropPosition === 'top') {
 			this.selectDrop.style.top = (ofs.top - selectDropHeight)+'px';
 			jcf.lib.addClass(this.selectDrop, this.options.dropFlippedClass);
@@ -1375,7 +1377,7 @@ jcf.addModule({
 		var activeItem = this.getFakeActiveOption();
 		this.removeClassFromItems(this.options.currentSelectedClass);
 		jcf.lib.addClass(activeItem, this.options.currentSelectedClass);
-		
+
 		// show current dropdown
 		jcf.lib.event.add(window, 'resize', this.onResizeWindow, this);
 		jcf.lib.event.add(window, 'scroll', this.onScrollWindow, this);
@@ -1609,7 +1611,7 @@ jcf.addModule({
 				this.fakeElement.style.color = getStyle(this.element, 'color');
 				this.fakeElement.style.position = 'absolute';
 				this.element.parentNode.insertBefore(this.fakeElement, this.element);
-				
+
 				if(this.element.value === this.origValue || !this.element.value) {
 					this.element.value = '';
 					this.togglePlaceholderText(true);
@@ -1723,7 +1725,7 @@ jcf.addModule({
 			if(!el) return; else if(state) addClass(el,cls); else removeClass(el,cls);
 		}
 	};
-	
+
 	// utility functions
 	function convertToArray(collection) {
 		var arr = [];
@@ -1771,7 +1773,7 @@ jcf.addModule({
  * Simple and fancy lightbox alternative
  *
  * Examples and documentation at: http://fancybox.net
- * 
+ *
  * Copyright (c) 2008 - 2010 Janis Skarnelis
  * That said, it is hardly a one-person project. Many people have submitted bugs, code, and offered their advice freely. Their support is greatly appreciated.
  *
