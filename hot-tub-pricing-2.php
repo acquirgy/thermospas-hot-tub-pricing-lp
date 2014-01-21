@@ -109,8 +109,8 @@
 						</div>
 						<!-- promo text -->
 						<div class="promo-txt">
-							<h2>Why a ThermoSpas HotTub?</h2>
-							<p>We construct, assemble, and sell the <strong>highest quality hot tubs factory direct so you save money.</strong> Other spa manufacturers may say "custom built", but we mean it! ThermoSpas are the only hot tubs that give buyers <strong>so many options</strong> that each custom hot tub's cost matches the buyer's budget.</p>
+							<h2>Why a ThermoSpas Hot Tub?</h2>
+							<p>We construct, assemble, and sell the <strong>highest quality hot tubs factory direct.</strong> Other spa manufacturers may say "custom built", but we mean it! ThermoSpas are the only hot tubs that give buyers <strong>so many options</strong> that each custom hot tub's cost matches the buyer's budget.</p>
 							<h2>Fast-Track to Buying Smart</h2>
 							<p>Get the facts about what to look for in a hot tub. Request the free brochure and DVD and get expert insight on:</p>
                             <ul>
@@ -127,7 +127,7 @@
 					<div class="features-holder">
 						<!-- features -->
 						<div class="features">
-							<strong class="title">Featured on Many Hit Shows:</strong>
+							<strong class="title">As Seen On:</strong>
 							<ul class="features-list">
 								<li><img src="/hot-tub-pricing-2/images/img05.jpg" alt="image description" /></li>
 								<li><img src="/hot-tub-pricing-2/images/img07.jpg" alt="image description" /></li>
