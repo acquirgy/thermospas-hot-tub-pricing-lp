@@ -1,37 +1,9 @@
 <?php
+  session_start();
 
-if($_POST) {
-
-    session_start();
-    require_once('db.php');
-
-    // Check for errors
-    if(!mysqli_connect_errno()) {
-
-      $query = "INSERT INTO ht_form (`fname`, `lname`, `phone`, `zipcode`, `email`, `iref`) VALUES (?, ?, ?, ?, ?, ?)";
-
-      $stmt = $mysqli->stmt_init();
-
-      $iref = isset($_SESSION['iref']) ? $_SESSION['iref'] : '';
-
-      if($stmt->prepare($query)) {
-
-        $stmt->bind_param("ssssss",
-          $_POST['fname'],
-          $_POST['lname'],
-          $_POST['phone'],
-          $_POST['zipcode'],
-          $_POST['email'],
-          $iref
-        );
-
-        $stmt->execute();
-        $ht_id = $stmt->insert_id;
-        $stmt->close();
-
-      }
-
-    }
+  if(!isset($_SESSION['iref'])) $_SESSION['iref'] = 'IOTO';
+  if(isset($_GET['src'])) $_SESSION['iref'] = $_GET['src'];
+  if(isset($_GET['iref'])) $_SESSION['iref'] = $_GET['iref'];
 
 ?>
 
@@ -41,190 +13,154 @@ if($_POST) {
 		<meta charset="utf-8">
 		<title>ThermoSpas</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-		<link media="all" rel="stylesheet" href="css/fancybox.css">
-		<link media="all" rel="stylesheet" href="css/all.css">
-		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-		<script type="text/javascript" src="js/jquery.main.js"></script>
-        <script type="text/javascript" src="js/confirmation.js"></script>
+		<link media="all" rel="stylesheet" href="/hot-tub-pricing-2/css/fancybox.css">
+		<link media="all" rel="stylesheet" href="/hot-tub-pricing-2/css/all.css">
+		<script type="text/javascript" src="/hot-tub-pricing-2/js/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="/hot-tub-pricing-2/js/jquery.main.js"></script>
 		<!--[if IE]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
 
-        <!-- Start Google Analytics Code -->
-        <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-33203294-1']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-        </script>
-        <!-- End Google Analytics Code -->
+    <!-- Start Google Analytics Code -->
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33203294-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+    <!-- End Google Analytics Code -->
+
 	</head>
 	<body>
 		<!-- page -->
 		<div id="wrapper">
-        <div id="topspace">
-            <h1 class="logo">ThermoSpas - Designed to Improve Your Life</h1>
-            <p class="phone-top"><strong>Have Questions?</strong><br />1-800-807-6107</p>
-        </div>
+            <div id="topspace">
+                <!-- logotype -->
+						<h1 class="logo">ThermoSpas - Designed to Improve Your Life</h1>
+                       <p class="phone-top"><strong>Have Questions?</strong><br />1-800-807-6107</p>
+            </div>
 			<!-- header -->
 			<header id="header">
 				<!-- main image -->
 				<div class="main-image">
-					<img src="images/thermospas-luxery-spa.jpg" height="188" alt="image description" width="1050px">
+					<img src="/hot-tub-pricing-2/images/img01.jpg" height="410" alt="image description">
+
+				</div>
+				<div class="header-frame">
+					<div class="header-holder">
+
+						<div class="top-block">
+							<div class="arrow-left"></div>
+							<div class="arrow-right">
+								<!-- main promo -->
+								<div class="main-promo">
+									<strong class="title">Get Your <span>FREE</span> DVD &amp; Brochure!</strong>
+									Plus, Right Now <strong>SAVE an Additional <span class="curr">$</span>1,000</strong> with Bonus Gifts!
+								</div>
+							</div>
+							<!-- registration form -->
+							<form class="form-reg" method="post" action="/hot-tub-pricing-2/confirmation.php">
+								<fieldset>
+									<legend>Register form</legend>
+									<strong class="title">Fast, Easy &amp; FREE!</strong>
+									<p>Just fill out the quick form below to receive your FREE information. No obligation!</p>
+                                    <p class="req">* required</p>
+									<div class="row">
+										<div class="row-area">
+											<input name="fname" id="nameField" class="text1 required" type="text" placeholder="First Name*" title="First Name*" />
+										</div>
+										<div class="row-area">
+											<input name="lname" class="text2 required" type="text" placeholder="Last Name*" title="Last Name*" />
+										</div>
+									</div>
+                                    <div class="row row-area">
+										<input id="phone-number" name="phone" type="text" class="required-number" placeholder="Phone*" title="Phone*" />
+									</div>
+                                    <div class="row row-area">
+											<input id="zipcode" name="zipcode" class="required" type="text" placeholder="Zip Code*" title="Zip Code*" />
+										</div>
+									<div class="row row-area">
+										<input type="text" name="email" value="Email" placeholder="Email" />
+									</div>
+									<div class="row">
+										<input type="submit" value="Get Your FREE DVD &amp; Brochure NOW!" />
+									</div>
+                                    <div id="form-links" class="row">
+                                    <a href="#">Your Info is Secure</a>&nbsp;|&nbsp;<a class="lightbox-opener" href="#popup1">Privacy Policy</a>
+                                    </div>
+								</fieldset>
+							</form>
+						</div>
+					</div>
 				</div>
 			</header>
 			<div id="main">
 				<!-- content -->
 				<section id="content">
-					<!-- confirm -->
-					<div class="confirm-block">
-						<div class="txt">
-							<h2>Thank you <span class="name"><?= $_POST['fname'] ?> <?= $_POST['lname'] ?>!</span></h2>
-                            <!-- Subtitle 1 -->
-							<p id="subtitle1"><strong>To view your Thermospas Brochure or DVD please click on the links below, or if you provide your address, your FREE DVD and Brochure will be mailed to you:</strong></p>
-
-                            <!-- Form 1 -->
-                            <form id="cfm-form1" class="form-reg2" action="#" method="post">
-                                <input type="hidden" class="hidden" value="<?= $ht_id ?>" name="ht_id" />
-                                <p><strong>I would like a FREE BROCHURE & DVD Mailed:</strong></p>
-
-                                <div class="mail-form-wrap">
-                                    <div class="mail-form-col row-area">
-                                        <input name="address1" type="text" class="required" type="text" placeholder="Address*" title="Address*" />
-                                    </div>
-                                    <div class="mail-form-col row-area">
-                                        <input name="address2" type="text" placeholder="Address 2" title="Address 2" />
-                                    </div>
-
-                                    <div class="mail-form-col row-area">
-                                        <input name="city" type="text" class="required" type="text" placeholder="City*" title="City*" />
-                                    </div>
-
-                                    <div class="mail-form-col">
-                                        <div class="row-area state-wrapper">
-                                            <select name="state" class="required-select state-wrapper row-area" title="State*" placeholder="State*">
-                                                <option value="0">State*</option>
-                                                <option>ID</option>
-                                                <option>IA</option>
-                                                <option>AL</option>
-                                                <option>AK</option>
-                                                <option>AZ</option>
-                                                <option>AR</option>
-                                                <option>WY</option>
-                                                <option>WA</option>
-                                                <option>VT</option>
-                                                <option>VA</option>
-                                                <option>WI</option>
-                                                <option>HI</option>
-                                                <option>DE</option>
-                                                <option>GA</option>
-                                                <option>WV</option>
-                                                <option>IL</option>
-                                                <option>IN</option>
-                                                <option>CA</option>
-                                                <option>KS</option>
-                                                <option>KY</option>
-                                                <option>CO</option>
-                                                <option>CT</option>
-                                                <option>LA</option>
-                                                <option>MA</option>
-                                                <option>MN</option>
-                                                <option>MS</option>
-                                                <option>MO</option>
-                                                <option>MI</option>
-                                                <option>MT</option>
-                                                <option>ME</option>
-                                                <option>MD</option>
-                                                <option>NE</option>
-                                                <option>NV</option>
-                                                <option>NH</option>
-                                                <option>NJ</option>
-                                                <option>NY</option>
-                                                <option>NM</option>
-                                                <option>OH</option>
-                                                <option>OK</option>
-                                                <option>OR</option>
-                                                <option>PA</option>
-                                                <option>RI</option>
-                                                <option>ND</option>
-                                                <option>NC</option>
-                                                <option>TN</option>
-                                                <option>TX</option>
-                                                <option>FL</option>
-                                                <option>SD</option>
-                                                <option>SC</option>
-                                                <option>UT</option>
-                                            </select>
-                                        </div>
-                                        <div class="row-area zip-wrapper">
-                                            <input name="zipcode" class="required-number" type="text" placeholder="Zip*" title="Zip" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="send-now">
-                                    <input type="submit" value="Send Me A FREE DVD &amp; Brochure NOW!" />
-                                </div>
-                            </form>
-
-                        <!-- Form 2 HIDDEN -->
-                        <form id="cfm-form2" class="success" action="http://www.thermospas.com/site-inspection.html" method="post" hidden="hidden">
-                             <!-- Subtitle 2 HIDDEN -->
-                            <p id="subtitle2"><strong>Your DVD and Brochure are on their way. In the meantime, you can view the Thermospas Brochure or DVD below. Also, our hot tub experts can help you find the perfect spot for your hot tub, click the button below to learn more.</strong></p>
-
-                            <div id="free-inspection">
-                                <input type="submit" value="Free Hot Tub Site Inspection!" />
-                            </div>
-                        </form>
-
+					<div class="top-promo">
+						<!-- promo disk -->
+						<div class="promo-disk">
+							<img src="/hot-tub-pricing-2/images/img02.png" alt="image description">
+							<a class="logo2" href="#">ThermoSpas</a>
+							<p>builds the highest quality, quietest, most luxurious &amp; energy efficient spas and hot tubs in the world.</p>
+							<a class="link focusForm" href="#">Get your FREE DVD &amp; Brochure!</a>
 						</div>
-						<!-- socials -->
-						<div class="social-block">
-							<h3>Connect with us:</h3>
-							<ul class="social-list">
-								<li><a class="facebook" href="https://www.facebook.com/ThermoSpas" target="_blank">Facebook</a></li>
-								<li><a class="pinterest" href="http://pinterest.com/thermospas/" target="_blank">Pinterest</a></li>
-								<li><a class="youtube" href="http://www.youtube.com/user/ThermoSpaInc?feature=watch" target="_blank">YouTube</a></li>
-								<li><a class="twitter" href="https://twitter.com/thermospas" target="_blank">Twitter</a></li>
-							</ul>
-                            <p>Please call <strong>800-807-6107</strong> with any questions or to speak to a sales associate.</p>
+						<!-- promo text -->
+						<div class="promo-txt">
+							<h2>Why a ThermoSpas HotTub?</h2>
+							<p>We construct, assemble, and sell the <strong>highest quality hot tubs factory direct so you save money.</strong> Other spa manufacturers may say "custom built", but we mean it! ThermoSpas are the only hot tubs that give buyers <strong>so many options</strong> that each custom hot tub's cost matches the buyer's budget.</p>
+							<h2>Fast-Track to Buying Smart</h2>
+							<p>Get the facts about what to look for in a hot tub. Request the free brochure and DVD and get expert insight on:</p>
+                            <ul>
+                                <li>Proven therapeutic benefits of hot tubs</li>
+                                <li>Hot tubs that double as a low gravity gym</li>
+                                <li>The most important component in a hot tub</li>
+                                <li>Detailed information on available hot tub models</li>
+                                <li>Which heaters last up to 10 years longer</li>
+                            </ul>
 						</div>
 					</div>
-					<!-- media -->
-					<div class="media-block">
-						<h2>Just click the links below to view or download content.</h2>
 
-						<ul class="media-list">
-							<li>
-								<a href="http://www.thermospas.com/wp-content/plugins/ts_form/downloads/Full_Series_Brochure.pdf" target="_blank">
-									<img src="images/img12.png" alt="image description" />
-									<span>Download the ThermoSpas Brochure PDF file (4.3 MB)</span>
-								</a>
-							</li>
-							<li>
-								<a href="http://www.thermospas.com/thermospas-dvd.html" target="_blank">
-									<img src="images/img13.png" alt="image description" />
-									<span>Watch videos from the ThermoSpas DVD</span>
-								</a>
-							</li>
-							<li>
-								<a href="http://www.thermospas.com/wp-content/plugins/ts_form/downloads/thermospas-savings-coupon.pdf"
-                                target="_blank">
-									<img src="images/img14.png" alt="image description" />
-									<span>Download the ThermoSpas $1000 coupon (562 KB)</span>
-								</a>
-							</li>
-						</ul>
+
+					<div class="features-holder">
+						<!-- features -->
+						<div class="features">
+							<strong class="title">Featured on Many Hit Shows:</strong>
+							<ul class="features-list">
+								<li><img src="/hot-tub-pricing-2/images/img05.jpg" alt="image description" /></li>
+								<li><img src="/hot-tub-pricing-2/images/img07.jpg" alt="image description" /></li>
+								<li><img src="/hot-tub-pricing-2/images/img08.jpg" alt="image description" /></li>
+							</ul>
+						</div>
+						<div class="btn-get">
+							<a href="#" class="focusForm">Get Your <span>FREE</span> DVD &amp; Brochure Now!</a>
+						</div>
+					</div>
+					<!-- testimonials -->
+					<div class="testimonials">
+						<img src="/hot-tub-pricing-2/images/img09.jpg" alt="image description">
+						<h2>What Real Customers Are Saying</h2>
+						<div class="quotes">
+							<blockquote>
+								<q>I would like to say that I would recommend ThermoSpas for whatever reason ‚Äì whether it be entertainment, stress or therapy. It has helped my husband and I immeasurably!‚Äù</q>
+								<cite>‚Äì Mrs. Christine L. Silva</cite>
+							</blockquote>
+							<blockquote>
+								<q>Our physical health, our sense of spiritual well being, a significantly lower stress level, and an improved love life are all benefits that both my wife and I noticed right away.‚Äù</q>
+								<cite>‚Äì Andrew and Doreen Laird</cite>
+							</blockquote>
+						</div>
 					</div>
 				</section>
 				<!-- footer -->
 				<div id="footer">
 					<!-- partners -->
-					<ul class="partners-list cfm-bottom" >
-						<li><img src="images/img10.png" alt="image description" /></li>
-						<li><img src="images/img11.png" alt="image description" /></li>
+					<ul class="partners-list">
+						<li><img src="/hot-tub-pricing-2/images/img10.png" alt="image description" /></li>
+						<li><img src="/hot-tub-pricing-2/images/img11.png" alt="image description" /></li>
+                        <li><p class="phone"><strong>Get Your Free DVD &amp; Brochure Now!</strong><br />Call Today 1-800-807-6107</p></li>
 					</ul>
 
 					<div class="txt">
@@ -232,7 +168,7 @@ if($_POST) {
 							<li><a class="lightbox-opener" href="#popup1">Privacy Policy</a></li>
 							<li><a class="lightbox-opener" href="#popup2">Terms and Conditions</a></li>
 						</ul>
-						<p>&copy;2013 ThermoSpas Hot Tub Products, Inc. All Rights Reserved.</p>
+						<p>&copy;2014 ThermoSpas Hot Tub Products, Inc. All Rights Reserved.</p>
 					</div>
 				</div>
 			</div>
@@ -252,7 +188,7 @@ if($_POST) {
                 <div class="frame">
                     <p>
                         This privacy policy describes how ThermoSpas Hot Tub Products, Inc. and its United
-                        States-based affiliates and subsidiaries (collectively, ìThermoSpasî) may handle
+                        States-based affiliates and subsidiaries (collectively, ‚ÄúThermoSpas‚Äù) may handle
                         and use personal identifiable information (&#34;PII&#34;) you submit directly or
                         indirectly to ThermoSpas, whether through your use of any ThermoSpas website (each,
                         a &#34;ThermoSpas Website&#34;), your offline submission of PII to ThermoSpas, your
@@ -290,7 +226,7 @@ if($_POST) {
                             of this information standing alone can be easily used to identify you, it may be
                             combined with PII you provide to ThermoSpas.</li>
                         <li>Cookies. When you visit a ThermoSpas Website, ThermoSpas may send a small text file
-                            to your computer called a &#34;cookie&#34; that identifies your browser to ThermoSpasí
+                            to your computer called a &#34;cookie&#34; that identifies your browser to ThermoSpas‚Äô
                             server. Many web browsers automatically accept cookies, but as part of the functionality
                             within your browser you usually can choose to decline to accept cookies if you prefer.
                             Any cookie sent to your computer by ThermoSpas in connection with your use of a
@@ -340,17 +276,17 @@ if($_POST) {
                         CHILDREN</h4>
                     <p>
                         ThermoSpas does not knowingly request, collect, or maintain PII from anyone under
-                        the age of thirteen (13) years old without verified parental consent. ThermoSpasí
+                        the age of thirteen (13) years old without verified parental consent. ThermoSpas‚Äô
                         intention is to refrain from collecting PII from anyone under the age of eighteen
                         (18) years old, whether through a ThermoSpas Website or otherwise. If ThermoSpas
-                        learns of ThermoSpasí collection of PII from anyone under the age of thirteen (13)
+                        learns of ThermoSpas‚Äô collection of PII from anyone under the age of thirteen (13)
                         years old without verified parental consent, ThermoSpas will remove this information
                         from the database in which ThermoSpas stores it.</p>
                     <h4>
                         SECURITY</h4>
                     <p>
                         ThermoSpas treats collected PII as an asset that must be protected and utilizes
-                        security protocols and tools to safeguard and prevent PII in ThermoSpasí control
+                        security protocols and tools to safeguard and prevent PII in ThermoSpas‚Äô control
                         from unauthorized access and disclosure. However, third parties may nonetheless
                         unlawfully intercept or access transmissions or private communications concerning
                         PII maintained by ThermoSpas. Although ThermoSpas works hard to protect the privacy
@@ -435,7 +371,7 @@ if($_POST) {
                 <div class="frame">
                     <h4>$250 Gift Card:</h4>
                     <p>To receive the $250 gift card from ThermoSpas, all homeowners/decision makers must be present for an on-site, 90-minute <em>ThermoSpas Home Experience</em> presentation and site evaluation for a single family residence by a certified ThermoSpas hot tub expert servicing your area. After the conclusion of the presentation and site evaluation, homeowners will receive a confirmation email with notification that their $250 gift card has been mailed to their provided mailing address. $250 gift card is only available during the promotional period, November 13, 2013 through December 08, 2013 or dates otherwise noted, and for the first 250 <em>Home Experiences</em> completed during that time.</p>
-                    <p>The provided gift cards are in no way affiliated with ThermoSpas, nor are they participants, sponsors or co-sponsors of this promotional program and are not liable for any alleged or actual claims related to this promotion. All gift cards are subject to the terms and conditions stated on the gift card or on the gift cardís website.</p>
+                    <p>The provided gift cards are in no way affiliated with ThermoSpas, nor are they participants, sponsors or co-sponsors of this promotional program and are not liable for any alleged or actual claims related to this promotion. All gift cards are subject to the terms and conditions stated on the gift card or on the gift card‚Äôs website.</p>
                     <h4>ThermoSpas Home Experience Service Areas:</h4>
                     <p>Not all areas within a city are serviceable. To confirm if your zip code is covered please call ThermoSpas customer service at 800-876-0158. </p>
                    <h4>ThermoSpas Home Experience:</h4>
@@ -466,5 +402,3 @@ if($_POST) {
 		</div>
 	</body>
 </html>
-
-<?php } else { header('Location: /'); } ?>

@@ -8,7 +8,7 @@ jQuery(function(){
     if( form.hasClass('valid') ) {
       $.ajax({
         type: "POST",
-        url: "ajax.php",
+        url: "/hot-tub-pricing-2/ajax.php",
         data: form.serialize()
       }).done(function( msg ) {
         form.slideUp();
