@@ -106,10 +106,10 @@ if($_POST) {
                                         <div class="row-area state-wrapper">
                                             <select name="state" class="required-select state-wrapper row-area" title="State*" placeholder="State*">
                                                 <option value="0">State*</option>
-                                                <option>AL</option>
                                                 <option>AK</option>
-                                                <option>AZ</option>
+                                                <option>AL</option>
                                                 <option>AR</option>
+                                                <option>AZ</option>
 												<option>CA</option>
 												<option>CO</option>
                                                 <option>CT</option>
@@ -117,29 +117,29 @@ if($_POST) {
 												<option>FL</option>
 												<option>GA</option>
 												<option>HI</option>
+                                                <option>IA</option>
 												<option>ID</option>
                                                 <option>IL</option>
 												<option>IN</option>
-												<option>IA</option>
 												<option>KS</option>
                                                 <option>KY</option>
 												<option>LA</option>
-												<option>ME</option>
-												<option>MD</option>
 												<option>MA</option>
+												<option>MD</option>
+												<option>ME</option>
 												<option>MI</option>
 												<option>MN</option>
-                                                <option>MS</option>
                                                 <option>MO</option>
+                                                <option>MS</option>
 												<option>MT</option>
+                                                <option>NC</option>
+                                                <option>ND</option>
 												<option>NE</option>
-                                                <option>NV</option>
                                                 <option>NH</option>
                                                 <option>NJ</option>
-												<option>NM</option>
+                                                <option>NM</option>
+												<option>NV</option>
                                                 <option>NY</option>
-												<option>NC</option>
-												<option>ND</option>
 												<option>OH</option>
                                                 <option>OK</option>
                                                 <option>OR</option>
@@ -150,11 +150,11 @@ if($_POST) {
 												<option>TN</option>
                                                 <option>TX</option>
 												<option>UT</option>
-												<option>VT</option>
 												<option>VA</option>
+												<option>VT</option>
 												<option>WA</option>
-												<option>WV</option>
 												<option>WI</option>
+												<option>WV</option>
                                                 <option>WY</option>
 												</select>
                                         </div>
