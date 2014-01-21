@@ -12,6 +12,8 @@ if($_POST) {
 
       $stmt = $mysqli->stmt_init();
 
+      $iref = isset($_SESSION['iref']) ? $_SESSION['iref'] : '';
+
       if($stmt->prepare($query)) {
 
         $stmt->bind_param("ssssss",
@@ -20,7 +22,7 @@ if($_POST) {
           $_POST['phone'],
           $_POST['zipcode'],
           $_POST['email'],
-          isset($_SESSION['iref']) ? $_SESSION['iref'] : ''
+          $iref
         );
 
         $stmt->execute();
