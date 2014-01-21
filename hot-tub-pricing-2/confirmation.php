@@ -46,7 +46,7 @@ if($_POST) {
 		<script type="text/javascript" src="/hot-tub-pricing-2/js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="/hot-tub-pricing-2/js/jquery.main.js"></script>
         <script type="text/javascript" src="/hot-tub-pricing-2/js/confirmation.js"></script>
-		<!--[if IE]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
+		<!--[if IE]><script type="text/javascript" src="/hot-tub-pricing-2/js/ie.js"></script><![endif]-->
 
         <!-- Start Google Analytics Code -->
         <script type="text/javascript">
@@ -232,7 +232,7 @@ if($_POST) {
 							<li><a class="lightbox-opener" href="#popup1">Privacy Policy</a></li>
 							<li><a class="lightbox-opener" href="#popup2">Terms and Conditions</a></li>
 						</ul>
-						<p>&copy;2013 ThermoSpas Hot Tub Products, Inc. All Rights Reserved.</p>
+						<p>&copy;2014 ThermoSpas Hot Tub Products, Inc. All Rights Reserved.</p>
 					</div>
 				</div>
 			</div>

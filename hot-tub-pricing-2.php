@@ -17,7 +17,7 @@
 		<link media="all" rel="stylesheet" href="/hot-tub-pricing-2/css/all.css">
 		<script type="text/javascript" src="/hot-tub-pricing-2/js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="/hot-tub-pricing-2/js/jquery.main.js"></script>
-		<!--[if IE]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
+		<!--[if IE]><script type="text/javascript" src="/hot-tub-pricing-2/js/ie.js"></script><![endif]-->
 
     <!-- Start Google Analytics Code -->
     <script type="text/javascript">
