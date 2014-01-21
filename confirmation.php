@@ -1,3 +1,38 @@
+<?php
+
+if($_POST) {
+
+    session_start();
+    require_once('db.php');
+
+    // Check for errors
+    if(!mysqli_connect_errno()) {
+
+      $query = "INSERT INTO ht_form (`fname`, `lname`, `phone`, `zipcode`, `email`, `iref`) VALUES (?, ?, ?, ?, ?, ?)";
+
+      $stmt = $mysqli->stmt_init();
+
+      if($stmt->prepare($query)) {
+
+        $stmt->bind_param("ssssss",
+          $_POST['fname'],
+          $_POST['lname'],
+          $_POST['phone'],
+          $_POST['zipcode'],
+          $_POST['email'],
+          isset($_SESSION['iref']) ? $_SESSION['iref'] : ''
+        );
+
+        $stmt->execute();
+        $ht_id = $stmt->insert_id;
+        $stmt->close();
+
+      }
+
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -8,6 +43,7 @@
 		<link media="all" rel="stylesheet" href="css/all.css">
 		<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
 		<script type="text/javascript" src="js/jquery.main.js"></script>
+        <script type="text/javascript" src="js/confirmation.js"></script>
 		<!--[if IE]><script type="text/javascript" src="js/ie.js"></script><![endif]-->
 
         <!-- Start Google Analytics Code -->
@@ -43,37 +79,31 @@
 					<!-- confirm -->
 					<div class="confirm-block">
 						<div class="txt">
-							<h2>Thank you <span class="name">XXFirstNameXX XXLastNameXX!</span></h2>
+							<h2>Thank you <span class="name"><?= $_POST['fname'] ?> <?= $_POST['lname'] ?>!</span></h2>
                             <!-- Subtitle 1 -->
 							<p id="subtitle1"><strong>To view your Thermospas Brochure or DVD please click on the links below, or if you provide your address, your FREE DVD and Brochure will be mailed to you:</strong></p>
-                            <!-- Subtitle 2 HIDDEN -->
-                            <p id="subtitle2" hidden="hidden"><strong>Your DVD and Brochure are on their way. In the meantime, you can view the Thermospas Brochure or DVD below. Also, our hot tub experts can help you find the perfect spot for your hot tub, click the button below to learn more.</strong></p>
+
                             <!-- Form 1 -->
-                            <form id="cfm-form1" action="#" method="post">
-                            <p><strong>I would like a FREE BROCHURE & DVD Mailed:</strong></p>
-                            <table>
-                                <tr>
-                                    <td class="column1">
-                                        <div class="row-area">
-                                            <input class="required" type="text" placeholder="Address*" title="address" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="row-area">
-                                            <input type="text" placeholder="Address2" title="address2" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="column1">
-                                        <div class="row-area">
-                                            <input class="required" type="text" placeholder="City*" title="city" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="state-wrapper">
-                                            <select class="required state-wrapper" title="State">
-                                                <option>State</option>
+                            <form id="cfm-form1" class="form-reg2" action="#" method="post">
+                                <input type="hidden" class="hidden" value="<?= $ht_id ?>" name="ht_id" />
+                                <p><strong>I would like a FREE BROCHURE & DVD Mailed:</strong></p>
+
+                                <div class="mail-form-wrap">
+                                    <div class="mail-form-col row-area">
+                                        <input name="address1" type="text" class="required" type="text" placeholder="Address*" title="Address*" />
+                                    </div>
+                                    <div class="mail-form-col row-area">
+                                        <input name="address2" type="text" placeholder="Address 2" title="Address 2" />
+                                    </div>
+
+                                    <div class="mail-form-col row-area">
+                                        <input name="city" type="text" class="required" type="text" placeholder="City*" title="City*" />
+                                    </div>
+
+                                    <div class="mail-form-col">
+                                        <div class="row-area state-wrapper">
+                                            <select name="state" class="required-select state-wrapper row-area" title="State*" placeholder="State*">
+                                                <option value="0">State*</option>
                                                 <option>ID</option>
                                                 <option>IA</option>
                                                 <option>AL</option>
@@ -127,19 +157,22 @@
                                             </select>
                                         </div>
                                         <div class="row-area zip-wrapper">
-                                            <input class="required-number" type="text" placeholder="Zip*" title="Zip" />
+                                            <input name="zipcode" class="required-number" type="text" placeholder="Zip*" title="Zip" />
                                         </div>
-                                    </td>
-                                </tr>
-                            </table>
-                            <div id="send-now">
-                                <input type="submit" value="Send Me A FREE DVD &amp; Brochure NOW!" />
-                            </div>
+                                    </div>
+                                </div>
+
+                                <div id="send-now">
+                                    <input type="submit" value="Send Me A FREE DVD &amp; Brochure NOW!" />
+                                </div>
                             </form>
 
                         <!-- Form 2 HIDDEN -->
-                        <form id="cfm-form2" action="#" method="post" hidden="hidden">
-                        <div id="free-inspection">
+                        <form id="cfm-form2" class="success" action="http://www.thermospas.com/site-inspection.html" method="post" hidden="hidden">
+                             <!-- Subtitle 2 HIDDEN -->
+                            <p id="subtitle2"><strong>Your DVD and Brochure are on their way. In the meantime, you can view the Thermospas Brochure or DVD below. Also, our hot tub experts can help you find the perfect spot for your hot tub, click the button below to learn more.</strong></p>
+
+                            <div id="free-inspection">
                                 <input type="submit" value="Free Hot Tub Site Inspection!" />
                             </div>
                         </form>
@@ -431,3 +464,5 @@
 		</div>
 	</body>
 </html>
+
+<?php } else { header('Location: /'); } ?>

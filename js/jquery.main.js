@@ -45,7 +45,7 @@ function initValidation() {
 	var regEmail = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	var regPhone = /^[0-9\-\(\)\ ]+$/;
 
-	jQuery('form.form-reg').each(function(){
+	jQuery('form.form-reg, form.form-reg2').each(function(){
 		var form = jQuery(this);
 		var successFlag = true;
 		var inputs = form.find('input:text, textarea, select');
@@ -57,7 +57,10 @@ function initValidation() {
 			inputs.each(checkField);
 
 			if(!successFlag) {
+				$('form').addClass('invalid');
 				return false;
+			} else {
+				$('form').addClass('valid');
 			}
 		}
 
@@ -65,8 +68,6 @@ function initValidation() {
 		function checkField(i, obj) {
 			var currentObject = jQuery(obj);
 			var currentParent = currentObject.parents('div.row-area');
-
-			console.log(currentObject);
 
 			// not empty fields
 			if(currentObject.hasClass('required')) {

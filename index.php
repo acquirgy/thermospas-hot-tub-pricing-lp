@@ -1,8 +1,10 @@
 <?php
   session_start();
-  if(isset($_GET['iref'])) {
-    $_SESSION['iref'] = $_GET['iref'];
-  }
+
+  if(!isset($_SESSION['iref'])) $_SESSION['iref'] = 'IOTO';
+  if(isset($_GET['src'])) $_SESSION['iref'] = $_GET['src'];
+  if(isset($_GET['iref'])) $_SESSION['iref'] = $_GET['iref'];
+
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +61,7 @@
 								</div>
 							</div>
 							<!-- registration form -->
-							<form class="form-reg" method="post" action="process.php">
+							<form class="form-reg" method="post" action="confirmation.php">
 								<fieldset>
 									<legend>Register form</legend>
 									<strong class="title">Fast, Easy &amp; FREE!</strong>
