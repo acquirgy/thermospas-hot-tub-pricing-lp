@@ -17,7 +17,7 @@ if($_POST) {
 
       if($stmt->prepare($query)) {
 
-        $stmt->bind_param("ssssss",
+        $stmt->bind_param("sssssss",
           $ht_date,
           $_POST['fname'],
           $_POST['lname'],
