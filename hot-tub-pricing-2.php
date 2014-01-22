@@ -105,8 +105,8 @@
 						<div class="promo-disk">
 							<img src="/hot-tub-pricing-2/images/img02.png" alt="image description">
 							<a class="logo2" href="#">ThermoSpas</a>
-							<p>builds the highest quality, quietest, most luxurious &amp; energy efficient spas and hot tubs in the world.</p>
-							<a class="link focusForm" href="#">Get your FREE DVD &amp; Brochure!</a>
+							<p>Why get a hot tub? Why get a ThermoSpas? Get the answers you need…</p>
+							<a class="link focusForm" href="#">Get your FREE DVD &amp; Brochure and also get a $1,000 savings coupon!</a>
 						</div>
 						<!-- promo text -->
 						<div class="promo-txt">
