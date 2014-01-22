@@ -8,15 +8,17 @@ if($_POST) {
     // Check for errors
     if(!mysqli_connect_errno()) {
 
-      $query = "INSERT INTO ht_form (`fname`, `lname`, `phone`, `zipcode`, `email`, `iref`) VALUES (?, ?, ?, ?, ?, ?)";
+      $query = "INSERT INTO ht_form (`ht_date`, `fname`, `lname`, `phone`, `zipcode`, `email`, `iref`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
       $stmt = $mysqli->stmt_init();
 
       $iref = isset($_SESSION['iref']) ? $_SESSION['iref'] : '';
+      $ht_date = date("Y-m-d");
 
       if($stmt->prepare($query)) {
 
-        $stmt->bind_param("ssssss",
+        $stmt->bind_param("sssssss",
+          $ht_date,
           $_POST['fname'],
           $_POST['lname'],
           $_POST['phone'],
