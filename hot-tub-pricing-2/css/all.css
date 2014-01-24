@@ -394,7 +394,7 @@ figure {
 .features {
 	float: left;
 	padding: 3px 0 10px 0px;
-	width: 310px;
+	width: 334px;
 }
 .features .title {
 	display: block;
@@ -406,6 +406,7 @@ figure {
 	color: #a0a0a0;
 }
 .features-list {
+	overflow: hidden;
 	margin: 0;
 	padding: 0 8px 0 0;
 	list-style: none;
@@ -413,10 +414,9 @@ figure {
 }
 .features-list li {
 	display: inline-block;
-	margin: 0 -4px 15px 0;
-	padding: 0 5px 0 8px;
-	vertical-align: top;
-	background: url(/hot-tub-pricing-2/images/sep-features-list.png) no-repeat;
+	margin: 0;
+	padding: 0 5px 0 11px;
+	background: url(/hot-tub-pricing-2/images/sep-features-list.png) no-repeat 0 0;
 }
 .features-list li:first-child {background: none;}
 .features-list img {
