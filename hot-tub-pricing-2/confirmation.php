@@ -8,15 +8,17 @@ if($_POST) {
     // Check for errors
     if(!mysqli_connect_errno()) {
 
-      $query = "INSERT INTO ht_form (`fname`, `lname`, `phone`, `zipcode`, `email`, `iref`) VALUES (?, ?, ?, ?, ?, ?)";
+      $query = "INSERT INTO ht_form (`ht_date`, `fname`, `lname`, `phone`, `zipcode`, `email`, `iref`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
       $stmt = $mysqli->stmt_init();
 
       $iref = isset($_SESSION['iref']) ? $_SESSION['iref'] : '';
+      $ht_date = date("Y-m-d");
 
       if($stmt->prepare($query)) {
 
-        $stmt->bind_param("ssssss",
+        $stmt->bind_param("sssssss",
+          $ht_date,
           $_POST['fname'],
           $_POST['lname'],
           $_POST['phone'],
@@ -106,57 +108,57 @@ if($_POST) {
                                         <div class="row-area state-wrapper">
                                             <select name="state" class="required-select state-wrapper row-area" title="State*" placeholder="State*">
                                                 <option value="0">State*</option>
-                                                <option>ID</option>
-                                                <option>IA</option>
-                                                <option>AL</option>
                                                 <option>AK</option>
-                                                <option>AZ</option>
+                                                <option>AL</option>
                                                 <option>AR</option>
-                                                <option>WY</option>
-                                                <option>WA</option>
-                                                <option>VT</option>
-                                                <option>VA</option>
-                                                <option>WI</option>
-                                                <option>HI</option>
-                                                <option>DE</option>
-                                                <option>GA</option>
-                                                <option>WV</option>
-                                                <option>IL</option>
-                                                <option>IN</option>
-                                                <option>CA</option>
-                                                <option>KS</option>
-                                                <option>KY</option>
-                                                <option>CO</option>
+                                                <option>AZ</option>
+												<option>CA</option>
+												<option>CO</option>
                                                 <option>CT</option>
-                                                <option>LA</option>
-                                                <option>MA</option>
-                                                <option>MN</option>
-                                                <option>MS</option>
+												<option>DE</option>
+												<option>FL</option>
+												<option>GA</option>
+												<option>HI</option>
+                                                <option>IA</option>
+												<option>ID</option>
+                                                <option>IL</option>
+												<option>IN</option>
+												<option>KS</option>
+                                                <option>KY</option>
+												<option>LA</option>
+												<option>MA</option>
+												<option>MD</option>
+												<option>ME</option>
+												<option>MI</option>
+												<option>MN</option>
                                                 <option>MO</option>
-                                                <option>MI</option>
-                                                <option>MT</option>
-                                                <option>ME</option>
-                                                <option>MD</option>
-                                                <option>NE</option>
-                                                <option>NV</option>
+                                                <option>MS</option>
+												<option>MT</option>
+                                                <option>NC</option>
+                                                <option>ND</option>
+												<option>NE</option>
                                                 <option>NH</option>
                                                 <option>NJ</option>
-                                                <option>NY</option>
                                                 <option>NM</option>
-                                                <option>OH</option>
+												<option>NV</option>
+                                                <option>NY</option>
+												<option>OH</option>
                                                 <option>OK</option>
                                                 <option>OR</option>
                                                 <option>PA</option>
                                                 <option>RI</option>
-                                                <option>ND</option>
-                                                <option>NC</option>
-                                                <option>TN</option>
+												<option>SC</option>
+												<option>SD</option>
+												<option>TN</option>
                                                 <option>TX</option>
-                                                <option>FL</option>
-                                                <option>SD</option>
-                                                <option>SC</option>
-                                                <option>UT</option>
-                                            </select>
+												<option>UT</option>
+												<option>VA</option>
+												<option>VT</option>
+												<option>WA</option>
+												<option>WI</option>
+												<option>WV</option>
+                                                <option>WY</option>
+												</select>
                                         </div>
                                         <div class="row-area zip-wrapper">
                                             <input name="zipcode" class="required-number" type="text" placeholder="Zip*" title="Zip" />
@@ -450,6 +452,25 @@ if($_POST) {
             </div>
         </div>
 		</div>
+		<!-- Google Code for Clix Conversion Conversion Page -->
+		<script type="text/javascript">
+		/* <![CDATA[ */
+		var google_conversion_id = 1070435200;
+		var google_conversion_language = "en";
+		var google_conversion_format = "3";
+		var google_conversion_color = "ffffff";
+		var google_conversion_label = "UstwCKjK2QEQgJe2_gM";
+		var google_conversion_value = 0;
+		var google_remarketing_only = false;
+		/* ]]> */
+		</script>
+		<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+		</script>
+		<noscript>
+		<div style="display:inline;">
+		<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1070435200/?value=0&amp;label=UstwCKjK2QEQgJe2_gM&amp;guid=ON&amp;script=0"/>
+		</div>
+		</noscript>
 	</body>
 </html>
 
